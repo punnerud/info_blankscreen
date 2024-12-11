@@ -95,11 +95,12 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             position: relative;
-            height: 390px;
+            aspect-ratio: 0.46;
+            height: auto;
             background-color: black;
         }
         .carousel-slide.compressed {
-            height: 320px;
+            height: auto;
         }
         .carousel-slide img {
             width: 100%;
@@ -116,10 +117,10 @@
         /* Responsive design for smaller screens */
         @media (max-width: 768px) {
             .carousel-container {
-                grid-auto-columns: 140px;
+                grid-auto-columns: 160px;
             }
-            .carousel-slide.span-two {
-                grid-column: span 1;
+            .carousel-slide {
+                width: 100%;
             }
         }
 
