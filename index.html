@@ -3,35 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Information</title>
+    <title>Blank Screen - Focus Mode App</title>
+    
+    <!-- App Installation Metadata -->
+    <meta name="apple-itunes-app" content="app-id=6474211716">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Blank Screen - A simple focus mode app that helps you stay productive by blocking distracting content on your iPhone">
+    <meta name="keywords" content="focus mode, productivity app, screen blocker, iPhone app, digital wellbeing">
+    
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
-        h1 {
+        h1, h2 {
             color: #2c3e50;
+        }
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        .feature {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .app-store-button {
+            display: inline-block;
+            margin: 20px 0;
+        }
+        .app-store-button img {
+            height: 50px;
         }
         .contact-info {
             background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 20px;
             margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 30px auto;
+            overflow: hidden;
+            text-align: center;
+        }
+        .carousel-container {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 180px;
+            gap: 15px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 10px;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            margin: 0 auto;
+        }
+        .carousel-container:active {
+            cursor: grabbing;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-slide {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            height: 390px;
+            background-color: black;
+        }
+        .carousel-slide.compressed {
+            height: 320px;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-slide.span-two img {
+            object-fit: contain;
+            mix-blend-mode: normal;
+            background-color: transparent;
+        }
+        
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .carousel-container {
+                grid-auto-columns: 140px;
+            }
+            .carousel-slide.span-two {
+                grid-column: span 1;
+            }
+        }
+
+        /* Hide navigation dots and buttons as they're not needed for this layout */
+        .carousel-nav, .carousel-button {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <p>Thank you for your interest. If you have any questions or concerns, please don't hesitate to reach out.</p>
+    <div class="hero">
+        <h1>Blank Screen</h1>
+        <p class="tagline">Take control of your focus with a simple tap</p>
+    </div>
+
+    <div class="carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="/static/460x0w_1.webp" alt="Blank Screen App Screenshot 1">
+            </div>
+            <div class="carousel-slide span-two">
+                <img src="/static/460x0w_2.webp" alt="Blank Screen App Screenshot 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="/static/460x0w_3.webp" alt="Blank Screen App Screenshot 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="/static/460x0w_4.webp" alt="Blank Screen App Screenshot 4">
+            </div>
+        </div>
+        <div class="app-store-button">
+            <a href="https://apps.apple.com/us/app/blank-screen/id6474211716">
+                <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+            </a>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h2>Simple Focus Mode</h2>
+            <p>Block distracting content on your iPhone with a single tap. Perfect for studying, working, or just taking a break.</p>
+        </div>
+        <div class="feature">
+            <h2>Easy to Use</h2>
+            <p>No complicated settings or configurations. Just tap to activate and regain your focus instantly.</p>
+        </div>
+        <div class="feature">
+            <h2>Privacy First</h2>
+            <p>Your privacy matters. We only collect anonymous usage statistics to improve the app experience.</p>
+        </div>
+    </div>
+
+    <div class="cta">
+        <a href="https://apps.apple.com/us/app/blank-screen/id6474211716" class="app-store-button">
+            <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us" alt="Download on the App Store">
+        </a>
+    </div>
+
     <div class="contact-info">
         <h2>Contact Information</h2>
-        <p><strong>Name:</strong> Morten Punnerud-Engelstad</p>
+        <p><strong>Developer:</strong> Morten Punnerud-Engelstad</p>
         <p><strong>Email:</strong> <a href="mailto:morten@punnerud.net">morten@punnerud.net</a></p>
+        <p><a href="/privacy-policy">Privacy Policy</a></p>
     </div>
+
+    <div class="footer">
+        <p>© 2024 Blank Screen App. All rights reserved.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.querySelector('.carousel-container');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let lastX;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.style.cursor = 'grabbing';
+                startX = e.pageX;
+                lastX = startX;
+                scrollLeft = slider.scrollLeft;
+                requestAnimationFrame(drag);
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.style.cursor = 'grab';
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                lastX = e.pageX;
+            });
+
+            function drag() {
+                if (isDown) {
+                    const deltaX = lastX - startX;
+                    slider.scrollLeft = scrollLeft - deltaX;
+                    requestAnimationFrame(drag);
+                }
+            }
+
+            // Touch events for mobile
+            slider.addEventListener('touchstart', (e) => {
+                isDown = true;
+                startX = e.touches[0].pageX;
+                lastX = startX;
+                scrollLeft = slider.scrollLeft;
+                requestAnimationFrame(drag);
+            });
+
+            slider.addEventListener('touchend', () => {
+                isDown = false;
+            });
+
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                lastX = e.touches[0].pageX;
+            });
+        });
+    </script>
 </body>
 </html>
