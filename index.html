@@ -128,6 +128,56 @@
         .carousel-nav, .carousel-button {
             display: none;
         }
+
+        /* Add these styles */
+        #blackscreen-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1000;
+            border: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        #black-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 2000;
+        }
+        
+        #settings-panel {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 2001;
+        }
+        
+        #settings-panel button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #2c3e50;
+            color: white;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -190,6 +240,15 @@
         <p>© 2024 Blank Screen App. All rights reserved.</p>
     </div>
 
+    <button id="blackscreen-button">Make screen black</button>
+    
+    <div id="black-overlay"></div>
+    
+    <div id="settings-panel">
+        <button id="fullscreen-button">Go Fullscreen</button>
+        <button id="exit-button">Exit</button>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const slider = document.querySelector('.carousel-container');
@@ -249,6 +308,52 @@
                 e.preventDefault();
                 lastX = e.touches[0].pageX;
             });
+        });
+
+        // Black screen functionality
+        const blackscreenButton = document.getElementById('blackscreen-button');
+        const blackOverlay = document.getElementById('black-overlay');
+        const settingsPanel = document.getElementById('settings-panel');
+        const fullscreenButton = document.getElementById('fullscreen-button');
+        const exitButton = document.getElementById('exit-button');
+        
+        blackscreenButton.addEventListener('click', () => {
+            blackOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        blackOverlay.addEventListener('click', () => {
+            settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
+        });
+        
+        fullscreenButton.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            }
+            settingsPanel.style.display = 'none';
+        });
+        
+        exitButton.addEventListener('click', () => {
+            blackOverlay.style.display = 'none';
+            settingsPanel.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && blackOverlay.style.display === 'block') {
+                blackOverlay.style.display = 'none';
+                settingsPanel.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                }
+            }
         });
     </script>
 </body>
