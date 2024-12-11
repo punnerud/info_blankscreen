@@ -178,6 +178,21 @@
             color: white;
             cursor: pointer;
         }
+        
+        #ios-message {
+            display: none;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 0.9em;
+        }
+        
+        #ios-message .app-store-link {
+            color: #007AFF;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -245,6 +260,11 @@
     <div id="black-overlay"></div>
     
     <div id="settings-panel">
+        <div id="ios-message">
+            Fullscreen mode is not available in Safari on iOS.<br>
+            Download our app for the best experience!
+            <a href="https://apps.apple.com/us/app/blank-screen/id6736843475" class="app-store-link">Get it on the App Store →</a>
+        </div>
         <button id="fullscreen-button">Go Fullscreen</button>
         <button id="exit-button">Exit</button>
     </div>
@@ -326,13 +346,22 @@
             settingsPanel.style.display = settingsPanel.style.display === 'block' ? 'none' : 'block';
         });
         
+        function isIOS() {
+            return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        }
+        
         fullscreenButton.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
-                });
+            if (isIOS()) {
+                document.getElementById('ios-message').style.display = 'block';
+                fullscreenButton.style.display = 'none';
+            } else {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => {
+                        console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                }
+                settingsPanel.style.display = 'none';
             }
-            settingsPanel.style.display = 'none';
         });
         
         exitButton.addEventListener('click', () => {
@@ -355,6 +384,10 @@
                 }
             }
         });
+
+        if (isIOS()) {
+            fullscreenButton.textContent = 'Get Full App';
+        }
     </script>
 </body>
 </html>
