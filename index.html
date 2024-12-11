@@ -353,7 +353,6 @@
         fullscreenButton.addEventListener('click', () => {
             if (isIOS()) {
                 document.getElementById('ios-message').style.display = 'block';
-                fullscreenButton.style.display = 'none';
             } else {
                 if (!document.fullscreenElement) {
                     document.documentElement.requestFullscreen().catch(err => {
@@ -384,10 +383,6 @@
                 }
             }
         });
-
-        if (isIOS()) {
-            fullscreenButton.textContent = 'Get Full App';
-        }
     </script>
 </body>
 </html>
